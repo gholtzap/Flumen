@@ -3,6 +3,7 @@ from test import trees
 
 app = Flask(__name__)
 
+
 # visualizes trees in a way that the flask app can print
 def to_dict(self):
     return {"name": self.name, "age": self.age}
