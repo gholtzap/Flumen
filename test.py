@@ -29,6 +29,20 @@ def delete_parent(value):
 def delete_child(value, id):
     trees[value].remove_node(id+100)
 
+# reads text from text_data.py and stores it as a variable
+# TO DO : use this text to call the add event function
+#       end goal: the user can type text into the site's form and the tree changes based on what they type
+def read_text_from_file(file_path):
+    with open(file_path, 'r') as f:
+        text_data = f.read()
+    return text_data
+
+file_path = 'text_data.txt'
+text_data = read_text_from_file(file_path)
+
+# Now you can use the `text_data` variable in your program as needed
+print(text_data)
+
 # driver 
 
 create_event("Get CA return offer") # ID of this event is 0
