@@ -4,13 +4,12 @@ from treelib import Node, Tree
 
 # big boys
 trees = []
-child = 0
 
 def count_child_nodes(tree, parent_id):
     child_count = 0
     for node_id in tree.nodes:
         node = tree.get_node(node_id)
-        if node.bpointer == parent_id:
+        if node.predecessor(tree.identifier) == parent_id:
             child_count += 1
     return child_count
 
@@ -32,8 +31,6 @@ def delete_child(value, id):
 
 # driver 
 
-
-
 create_event("Get CA return offer") # ID of this event is 0
 create_event("made to be deleted haha")
 create_event("Calculate salary")
@@ -43,9 +40,6 @@ add_child("Cancel OLIV lease",0)
 add_child("See if I have to file taxes", 2)
 
 delete_child(0,1)
-
-
-#delete_child(2,"See if I have to file taxes")
 
 for tree in trees:
     print(trees.index(tree), end=" ")
