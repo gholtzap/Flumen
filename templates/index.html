@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flumen</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script>  
+        
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            font-color: pink;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Set the container height to at least the full viewport height */
+        }
+
+        .modern-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            padding: 12px 24px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            
+        }
+
+        .tree-output {
+            color: pink;
+        }
+
+        .modern-button:hover {
+            background-color: #45a049;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+        }
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>My Flask App</h1>
+    
+        <div class = "container">
+            <button id="addEventBtn" class="modern-button"> Add Event </button>
+            <button id="addChildBtn" class="modern-button"> Add Child </button>
+            <button class="modern-button"> Delete Event </button>
+            <pre class = "tree-output">{{ output | tojson(indent=2) | safe }}</pre>
+        </div>
+    <p>{{ output }}</p>
+
+    
+</body>
+</html>
