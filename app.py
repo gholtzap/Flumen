@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from test import trees, add_child
 
 app = Flask(__name__)
@@ -16,6 +16,15 @@ def get_trees():
 
 # http://127.0.0.1:5000/ (homepage)
 
+@app.route('/submit_text', methods=['POST'])
+def submit_text():
+    text = request.form['textfield']
+    
+    # Process and store the text as needed (e.g., in a variable, a file, or a database)
+    with open('text_data.txt', 'a') as f:
+        f.write(text + '\n')
+    
+    return "Text submitted successfully"
 
 @app.route('/')
 def index():

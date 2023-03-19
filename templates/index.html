@@ -6,9 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flumen</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-    <script>  
-        
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function showPopup() {
+            $("#popup-form").show();
+        }
+
+        function submitForm() {
+            var text = $("#textfield").val();
+            
+            $.post("/submit_text", {textfield: text}, function(data) {
+                alert(data);
+                $("#popup-form").hide();
+            });
+            
+            return false;
+        }
     </script>
     <style>
         body {
@@ -21,7 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Set the container height to at least the full viewport height */
+            min-height: 1vh; /* Set the container height to at least the full viewport height */
         }
 
         .modern-button {
@@ -80,18 +94,44 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        .title {
+            font-weight: bold;
+         }
+
+         #popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+        }
         
     </style>
 </head>
 <body>
-    <h1>My Flask App</h1>
+    <h1 class = 'title', style="color:#5da6de;", style="font-family:gill sans, sans-serif;">Flumen.</h1>
     
         <div class = "container">
-            <button id="addEventBtn" class="modern-button"> Add Event </button>
+            <button id="addEventBtn" class="modern-button" onclick="showPopup()"> Add Event </button>
             <button id="addChildBtn" class="modern-button"> Add Child </button>
             <button class="modern-button"> Delete Event </button>
             <pre class = "tree-output">{{ output | tojson(indent=2) | safe }}</pre>
         </div>
+
+        
+        <div id="popup-form">
+            <form onsubmit="return submitForm();">
+                <label for="textfield">Enter text:</label>
+                <input type="text" id="textfield" name="textfield">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    
     <p>{{ output }}</p>
 
     
