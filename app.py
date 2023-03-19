@@ -22,7 +22,5 @@ def index():
     x = get_trees().json
     return render_template('index.html', output=x)
 
-#h
-
 if __name__ == '__main__':
     app.run(debug=True)
