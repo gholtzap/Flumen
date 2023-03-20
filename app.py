@@ -1,8 +1,11 @@
-from flask import Flask, jsonify, render_template, request
-from test import trees, add_child
+from flask import Flask, jsonify, render_template, request, redirect, url_for
+from test import trees, add_child, create_event_app
 
 app = Flask(__name__)
 
+with open('text_data.txt', 'w') as f:
+    f.write('')
+    
 # visualizes trees in a way that the flask app can print
 
 
@@ -11,6 +14,7 @@ def to_dict(self):
 
 
 def get_trees():
+    
     tree_list = [tree.to_dict() for tree in trees]
     return jsonify(tree_list)
 
@@ -23,8 +27,10 @@ def submit_text():
     # Process and store the text as needed (e.g., in a variable, a file, or a database)
     with open('text_data.txt', 'a') as f:
         f.write(text + '\n')
+    create_event_app(text)
     
-    return "Text submitted successfully"
+    return "Event successfully submitted!"
+
 
 @app.route('/')
 def index():

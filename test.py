@@ -37,23 +37,32 @@ def read_text_from_file(file_path):
         text_data = f.read()
     return text_data
 
+
+
+
 file_path = 'text_data.txt'
 text_data = read_text_from_file(file_path)
 
+
+def create_event_app(value):
+    create_event(value)
+    
 # Now you can use the `text_data` variable in your program as needed
 print(text_data)
 
 # driver 
 
-create_event("Get CA return offer") # ID of this event is 0
-create_event("made to be deleted haha")
-create_event("Calculate salary")
+#create_event(text_data) # ID of this event is 0
 
-add_child("Buy parking at Fulton garage",0)
-add_child("Cancel OLIV lease",0)
-add_child("See if I have to file taxes", 2)
+#create_event("Get CA return offer") 
+#create_event("made to be del   eted haha")
+#create_event("Calculate salary")
 
-delete_child(0,1)
+#add_child("Buy parking at Fulton garage",0)
+#add_child("Cancel OLIV lease",0)
+#add_child("See if I have to file taxes", 2)
+
+#delete_child(0,1)
 
 for tree in trees:
     print(trees.index(tree), end=" ")
