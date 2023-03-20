@@ -47,6 +47,9 @@ text_data = read_text_from_file(file_path)
 def create_event_app(value):
     create_event(value)
     
+def add_child_app(value, index):
+    add_child(value,int(index))
+    
 # Now you can use the `text_data` variable in your program as needed
 print(text_data)
 
