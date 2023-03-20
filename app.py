@@ -7,27 +7,18 @@ with open('text_data.txt', 'w') as f:
     f.write('')
     
 # visualizes trees in a way that the flask app can print
-
-
 def to_dict(self):
     return {"name": self.name, "age": self.age}
-
 
 def get_trees():
     
     tree_list = [tree.to_dict() for tree in trees]
     return jsonify(tree_list)
 
-# http://127.0.0.1:5000/ (homepage)
-
 @app.route('/submit_text', methods=['POST'])
 def submit_text():
     text = request.form['textfield']
-    
-    # Process and store the text as needed (e.g., in a variable, a file, or a database)
-    
     create_event_app(text)
-    
     return "Event successfully submitted!"
 
 @app.route('/submit_child', methods=['POST'])
