@@ -47,3 +47,6 @@ for tree in trees:
     print(trees.index(tree), end=" ")
     print(tree, end="")
  
+ 
+def hh():
+    return 0
