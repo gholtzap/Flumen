@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-from test import trees, create_event_app, add_child_app
+from test import trees, add_child, create_event_app
 
 app = Flask(__name__)
 
@@ -18,15 +18,16 @@ def get_trees():
 @app.route('/submit_text', methods=['POST'])
 def submit_text():
     text = request.form['textfield']
+<<<<<<< HEAD
+=======
+    
+    # Process and store the text as needed (e.g., in a variable, a file, or a database)
+    with open('text_data.txt', 'a') as f:
+        f.write(text + '\n')
+>>>>>>> parent of dbf07f5 (update)
     create_event_app(text)
     return "Event successfully submitted!"
 
-@app.route('/submit_child', methods=['POST'])
-def submit_child():
-    nameChild = request.form['nameChild']
-    indexParent = int(request.form['indexParent'])
-    add_child_app(nameChild, indexParent)
-    return "Child successfully submitted!"
 
 @app.route('/')
 def index():
