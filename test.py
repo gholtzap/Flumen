@@ -39,11 +39,9 @@ text_data = read_text_from_file(file_path)
 def create_event_app(value):
     create_event(value)
     
-<<<<<<< HEAD
 def add_child_app(value, index):
     add_child(value,int(index))
     
-=======
 # Now you can use the `text_data` variable in your program as needed
 print(text_data)
 
@@ -60,7 +58,6 @@ print(text_data)
 #add_child("See if I have to file taxes", 2)
 
 #delete_child(0,1)
->>>>>>> parent of dbf07f5 (update)
 
 for tree in trees:
     print(trees.index(tree), end=" ")

@@ -18,16 +18,12 @@ def get_trees():
 @app.route('/submit_text', methods=['POST'])
 def submit_text():
     text = request.form['textfield']
-<<<<<<< HEAD
-=======
     
     # Process and store the text as needed (e.g., in a variable, a file, or a database)
     with open('text_data.txt', 'a') as f:
         f.write(text + '\n')
->>>>>>> parent of dbf07f5 (update)
     create_event_app(text)
     return "Event successfully submitted!"
-
 
 @app.route('/')
 def index():
