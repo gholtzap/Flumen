@@ -16,6 +16,30 @@ def get_trees():
     tree_list = [tree.to_dict() for tree in trees]
     return jsonify(tree_list)
 
+# parses through JSON object and returns list of children/parents/etc
+def vis_trees(json_object, return_type):
+    full, parents, children = "","",""
+    
+    for item in json_object:
+        for parent, child_data in item.items():
+            full+=parent
+            parents += parent
+            #print("Parent name:",parent)
+            
+            for child in child_data['children']:
+                full+=child
+                children += child
+                #print("Child name:", child)
+    
+    match return_type:
+        case 1:
+            return parents
+        case 2:
+            return children
+        case 3: 
+            return full
+    return full
+
 @app.route('/submit_text', methods=['POST'])
 def submit_text():
     text = request.form['textfield']
@@ -31,8 +55,15 @@ def submit_child():
 
 @app.route('/')
 def index():
-    x = get_trees().json
-    return render_template('index.html', output=x)
+    raw_json = get_trees().json
+    # for the second param:
+    # 1 = parents, 2 = children, 3 = full (both parents and children)
+    full_tree = vis_trees(raw_json,3)
+    parents = vis_trees(raw_json,1)
+    children = vis_trees(raw_json,2)
+    
+    # sending the above variables to index.html
+    return render_template('index.html', full_tree=full_tree, parents = parents, children = children)
 
 if __name__ == '__main__':
     app.run(debug=True)

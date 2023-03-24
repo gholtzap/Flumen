@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
     <title>Flumen</title>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -46,11 +48,27 @@
 <body>
     <h1 class = 'title', style="color:#5da6de;", style="font-family:gill sans, sans-serif;">Flumen.</h1>
     
-        <div class = "container">
+        <div class = "buttons">
             <button id="addEventBtn" class="modern-button" onclick="showPopup()"> Add Event </button>
             <button id="addChildBtn" class="modern-button" onclick ="showPopupAddChild()"> Add Child </button>
             <button class="modern-button"> Delete Event </button>
-            <pre class = "tree-output">{{ output | tojson(indent=2) | safe }}</pre>
+            
+        </div>
+
+        <div class="trees_output">
+            <br></br>
+            <h1 class = 'full-tree-output-title'>Full Tree<h1>
+            <br></br>
+            <pre class = "full_tree">{{ full_tree }}</pre>
+            <br></br>
+            <h1 class = 'parents-output-title'>Parents<h1>
+            <br></br>
+            <pre class = "parents">{{ parents }}</pre>
+            <br></br>
+            <h1 class = 'children-output-title'>Children<h1>
+            <br></br>
+            <pre class = "children">{{ children }}</pre>
+
         </div>
 
         <div id="popup-form">
@@ -78,93 +96,3 @@
 </body>
 </html>
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: black;
-        font-color: pink;
-    }
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 1vh; /* Set the container height to at least the full viewport height */
-    }
-    .modern-button {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        text-align: center;
-        display: inline-block;
-        font-size: 16px;
-        padding: 12px 24px;
-        margin: 10px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-        
-    }
-    .tree-output {
-        color: pink;
-    }
-    .modern-button:hover {
-        background-color: #45a049;
-    }
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.4);
-    }
-    
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 30%;
-    }
-    
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    .title {
-        font-weight: bold;
-     }
-     #popup-form {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        border: 1px solid black;
-        padding: 20px;
-    }
-    #popup-form-add-child {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        border: 1px solid black;
-        padding: 20px;
-    }
-    
-</style>
