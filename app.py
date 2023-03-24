@@ -1,32 +1,16 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 from tree_mod import trees, add_child, create_event_app
 
-
 app = Flask(__name__)
 
 with open('text_data.txt', 'w') as f:
     f.write('')
     
 # visualizes trees in a way that the flask app can print
-#def to_dict(self):
-    #return {"name": self.name, "age": self.age}
-    
-def to_dict(tree):
-    data = {}
-
-    for node in tree.all_nodes_itr():
-        if node.is_root():
-            data[node.tag] = {"children": []}
-        else:
-            parent = tree.parent(node.identifier)
-            if "children" not in data[parent.tag]:
-                data[parent.tag]["children"] = []
-            data[parent.tag]["children"].append(node.tag)
-
-    return data
+def to_dict(self):
+    return {"name": self.name, "age": self.age}
 
 def get_trees():
-    
     tree_list = [tree.to_dict() for tree in trees]
     return jsonify(tree_list)
 
@@ -34,17 +18,20 @@ def get_trees():
 def vis_trees(json_object, return_type):
     full, parents, children = "","",""
     
-    for item in json_object:
-        for parent, child_data in item.items():
-            full+=parent
-            parents += parent
-            #print("Parent name:",parent)
-            
-            for child in child_data['children']:
-                full+=child
-                children += child
-                #print("Child name:", child)
+    print("json_object:", json_object) 
     
+    for item in json_object:
+        parent = list(item.keys())[0]
+        child_data = item[parent]
+
+        full += f"\n{parent}"
+        parents += f"\n{parent}"
+
+        if 'children' in child_data:
+            for child in child_data['children']:
+                full += f"\n\t{child}"
+                children += f"\n{child}"
+            
     match return_type:
         case 1:
             return parents
