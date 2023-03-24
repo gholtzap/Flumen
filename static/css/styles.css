@@ -1,7 +1,27 @@
+@font-face {
+    font-family: "Salma";
+    src: url("/static/fonts/salma-pro-font/SalmaproMedium-0Wooo.otf") format("opentype");
+}
+
+
+h1 {
+    font-family: "Salma", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #2a2a2a;
+    text-shadow: 3px 3px 0px #c49d10;
+}
+  
+
+*:not(h1) {
+    font-family: "Salma", sans-serif;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: black;
-    font-color: pink;
 }
 
 .buttons {
@@ -11,19 +31,45 @@ body {
     min-height: 1vh;
 }
 
-.modern-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin: 10px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
 
+
+.modern-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(10, 7, 7, 0.2);
+    background-color: #2154ad;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#close-popup-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+
+#close-popup-btn:hover {
+  color: #ff0000;
+}
+
+.modern-button:hover {
+    background-color: #ca9e0b;
 }
 
 .full_tree {
@@ -101,6 +147,44 @@ body {
     background-color: white;
     border: 1px solid black;
     padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 9999;
+}
+
+#popup-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+#popup-form label {
+    margin-bottom: 10px;
+}
+
+#popup-form input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+#popup-form button[type="submit"] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    padding: 12px 24px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#popup-form button[type="submit"]:hover {
+    background-color: #45a049;
 }
 
 #popup-form-add-child {
@@ -109,7 +193,39 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid black;
+    background-color: #fff;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
 }
+
+#popup-form-add-child form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #popup-form-add-child label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #popup-form-add-child input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  #popup-form-add-child button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #popup-form-add-child button[type="submit"]:hover {
+    background-color: #0069d9;
+  }

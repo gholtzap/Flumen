@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     
-    <title>Flumen</title>
+    <title class="flumen_title">Flumen</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </head>
@@ -23,21 +23,22 @@
 
         <div class="trees_output">
             <br></br>
-            <h1 class = 'full-tree-output-title'>Full Tree<h1>
-            <br></br>
-            <pre class = "full_tree">{{ full_tree }}</pre>
-            <br></br>
-            <h1 class = 'parents-output-title'>Parents<h1>
-            <br></br>
-            <pre class = "parents">{{ parents }}</pre>
-            <br></br>
-            <h1 class = 'children-output-title'>Children<h1>
-            <br></br>
-            <pre class = "children">{{ children }}</pre>
+            <h2 class = 'full-tree-output-title'>Full Tree<h2>
+            
+            <h2><br></br><pre class = "full_tree">{{ full_tree }}</pre><br></br></h2>
+            
+            <h2 class = 'parents-output-title'>Parents<h2>
+            
+            <h3><br></br><pre class = "parents">{{ parents }}</pre><br></br></h2>
+            
+            <h2 class = 'children-output-title'>Children<h2>
+            
+            <h2><br></br><pre class = "children">{{ children }}</pre><br></br></h2>
 
         </div>
 
         <div id="popup-form">
+            <button id="close-popup-btn" onclick="closeForm()">x</button>
             <form onsubmit="return submitForm();">
                 <label for="textfield">Enter name of event:</label>
                 <input type="text" id="textfield" name="textfield">
@@ -46,6 +47,7 @@
         </div>
 
         <div id="popup-form-add-child">
+            <button id="close-popup-btn" onclick="closeFormAddChild()">x</button>
             <form onsubmit="return submitFormChild();">
                 <label for="nameChild">Enter name of event:</label>
                 <input type="text" id="nameChild" name="nameChild">

@@ -6,6 +6,14 @@ function showPopupAddChild() {
     $("#popup-form-add-child").show();
 }
 
+function closeForm(){
+    $('#popup-form').hide();
+}
+
+function closeFormAddChild() {
+    $('#popup-form-add-child').hide();
+}
+
 function submitForm() {
     let text = $("#textfield").val();
 
