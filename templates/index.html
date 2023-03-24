@@ -4,45 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
-    <title>Flumen</title>
     
+    <title>Flumen</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function showPopup() {
-            $("#popup-form").show();
-        }
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 
-        function showPopupAddChild() {
-            $("#popup-form-add-child").show();
-        }
+    
 
-        function submitForm() {
-            let text = $("#textfield").val();
-            
-            $.post("/submit_text", {textfield: text}, function(data) {
-                alert(data);
-                $("#popup-form").hide();
-            });
-            
-            return false;
-        }
-
-        function submitFormChild() {
-            let nameChild = $("#nameChild").val();
-            let indexParent = $("#indexParent").val();
-            $.post("/submit_child", {nameChild: nameChild, indexParent: indexParent}, function(data) {
-                alert(data);
-                $("#popup-form-add-child").hide();
-            });
-            
-            return false;
-        }
-    </script>
-
-   
+    
 </head>
 
 <body>
@@ -88,11 +58,5 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
-
-    
-    <p>{{ output }}</p>
-
-    
 </body>
 </html>
-

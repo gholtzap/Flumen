@@ -8,8 +8,22 @@ with open('text_data.txt', 'w') as f:
     f.write('')
     
 # visualizes trees in a way that the flask app can print
-def to_dict(self):
-    return {"name": self.name, "age": self.age}
+#def to_dict(self):
+    #return {"name": self.name, "age": self.age}
+    
+def to_dict(tree):
+    data = {}
+
+    for node in tree.all_nodes_itr():
+        if node.is_root():
+            data[node.tag] = {"children": []}
+        else:
+            parent = tree.parent(node.identifier)
+            if "children" not in data[parent.tag]:
+                data[parent.tag]["children"] = []
+            data[parent.tag]["children"].append(node.tag)
+
+    return data
 
 def get_trees():
     
