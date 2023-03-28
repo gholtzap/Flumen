@@ -20,7 +20,7 @@ function submitForm() {
     $.post("/submit_text", { textfield: text }, function (data) {
         alert(data);
         $("#popup-form").hide();
-;    });
+    });
 
     return false;
 }
