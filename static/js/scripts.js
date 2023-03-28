@@ -20,7 +20,7 @@ function submitForm() {
     $.post("/submit_text", { textfield: text }, function (data) {
         alert(data);
         $("#popup-form").hide();
-    });
+;    });
 
     return false;
 }
@@ -31,6 +31,7 @@ function submitFormChild() {
     $.post("/submit_child", { nameChild: nameChild, indexParent: indexParent }, function (data) {
         alert(data);
         $("#popup-form-add-child").hide();
+        location.reload();
     });
 
     return false;
