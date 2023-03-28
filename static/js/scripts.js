@@ -1,17 +1,11 @@
+// add_parent popup
+
 function showPopup() {
     $("#popup-form").show();
 }
 
-function showPopupAddChild() {
-    $("#popup-form-add-child").show();
-}
-
 function closeForm(){
     $('#popup-form').hide();
-}
-
-function closeFormAddChild() {
-    $('#popup-form-add-child').hide();
 }
 
 function submitForm() {
@@ -25,12 +19,41 @@ function submitForm() {
     return false;
 }
 
+// add_child popup
+function showPopupAddChild() {
+    $("#popup-form-add-child").show();
+}
+
+function closeFormAddChild() {
+    $('#popup-form-add-child').hide();
+}
+
 function submitFormChild() {
     let nameChild = $("#nameChild").val();
     let indexParent = $("#indexParent").val();
     $.post("/submit_child", { nameChild: nameChild, indexParent: indexParent }, function (data) {
         alert(data);
         $("#popup-form-add-child").hide();
+    });
+
+    return false;
+}
+
+// delete_parent popup
+
+function showPopupDeleteParent() {
+    $("#popup-form-delete-parent").show();  // Update the ID
+}
+
+function closeFormDeleteParent() {
+    $('#popup-form-delete-parent').hide();  // Update the ID
+}
+
+function submitFormDeleteParent() {
+    let indexParent = $("#nameParent").val();
+    $.post("/delete_parent", { nameParent: indexParent }, function (data) {
+        alert(data);
+        $("#popup-form-delete-parent").hide();  // Update the ID
     });
 
     return false;

@@ -1,7 +1,7 @@
 from treelib import Node, Tree
 
 # https://treelib.readthedocs.io/en/latest/
-#h
+
 trees = []
 
 def count_child_nodes(tree, parent_id):
@@ -42,11 +42,6 @@ def create_event_app(value):
 def add_child_app(value, index):
     add_child(value,int(index))
     
-
 for tree in trees:
     print(trees.index(tree), end=" ")
     print(tree, end="")
- 
- 
-def hh():
-    return 0

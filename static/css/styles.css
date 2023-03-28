@@ -13,7 +13,6 @@ h1 {
     color: #2a2a2a;
     text-shadow: 3px 3px 0px #c49d10;
 }
-  
 
 *:not(h1) {
     font-family: "Salma", sans-serif;
@@ -30,8 +29,6 @@ body {
     align-items: center;
     min-height: 1vh;
 }
-
-
 
 .modern-button {
     display: inline-block;
@@ -138,6 +135,8 @@ body {
     font-weight: bold;
 }
 
+/* ADD_PARENT */
+
 #popup-form {
     display: none;
     position: fixed;
@@ -187,6 +186,9 @@ body {
     background-color: #45a049;
 }
 
+
+/* ADD_CHILD */
+
 #popup-form-add-child {
     display: none;
     position: fixed;
@@ -229,3 +231,63 @@ body {
   #popup-form-add-child button[type="submit"]:hover {
     background-color: #0069d9;
   }
+
+
+  #popup-form-add-child {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+/* DELETE_PARENT */
+
+
+#popup-form-delete-parent form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #popup-form-delete-parent label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #popup-form-delete-parent input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  #popup-form-delete-parent button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #popup-form-delete-parent button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+
+  #popup-form-delete-parent {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}

@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-from tree_mod import trees, add_child, create_event_app
+from tree_mod import trees, add_child, create_event_app, delete_parent
 
 app = Flask(__name__)
 
@@ -53,6 +53,12 @@ def submit_child():
     indexParent = int(request.form['indexParent'])
     add_child(nameChild, indexParent)
     return "Child successfully submitted!"
+
+@app.route('/delete_parent', methods=['POST'])
+def delete_event_route():
+    index = int(request.form['nameParent'])
+    delete_parent(index)
+    return "Event successfully deleted!"
 
 @app.route('/')
 def index():
