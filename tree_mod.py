@@ -4,6 +4,9 @@ from treelib import Node, Tree
 
 trees = []
 
+# #################################################################
+# add
+
 def count_child_nodes(tree, parent_id):
     child_count = 0
     for node_id in tree.nodes:
@@ -22,6 +25,15 @@ def add_child(value, p):
     x = count_child_nodes(trees[p], p)
     trees[p].create_node(value, 100+x, parent=p)
     
+def create_event_app(value):
+    create_event(value)
+    
+def add_child_app(value, index):
+    add_child(value,int(index))
+
+# #################################################################
+# delete
+
 def delete_parent(value):
   trees.pop(value)
 
@@ -33,14 +45,11 @@ def read_text_from_file(file_path):
         text_data = f.read()
     return text_data
 
+# #################################################################
+# misc 
 file_path = 'text_data.txt'
 text_data = read_text_from_file(file_path)
 
-def create_event_app(value):
-    create_event(value)
-    
-def add_child_app(value, index):
-    add_child(value,int(index))
     
 for tree in trees:
     print(trees.index(tree), end=" ")

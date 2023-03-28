@@ -60,3 +60,25 @@ function submitFormDeleteParent() {
 
     return false;
 }
+
+// delete_child popup
+
+function showPopupDeleteChild() {
+    $("#popup-form-delete-child").show();
+}
+
+function closeFormDeleteChild() {
+    $('#popup-form-delete-child').hide();
+}
+
+function submitFormDeleteChild() {
+    let indexParent = $("#indexParent_DeleteChild").val();
+    let indexChild = $("#indexChild_DeleteChild").val();
+    $.post("/delete_child", { indexParent: indexParent, indexChild: indexChild }, function (data) {
+        alert(data);
+        $("#popup-form-delete-child").hide();
+        location.reload();
+    });
+
+    return false;
+}

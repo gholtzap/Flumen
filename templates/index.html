@@ -18,7 +18,7 @@
             <button id="addEventBtn" class="modern-button" onclick="showPopup()"> Add Event </button>
             <button id="addChildBtn" class="modern-button" onclick ="showPopupAddChild()"> Add Child </button>
             <button id = "deleteParentBtn" class="modern-button" onclick = "showPopupDeleteParent()"> Delete Event </button>
-            
+            <button id= "deleteChildBtn" class="modern-button" onclick="showPopupDeleteChild()"> Delete Child </button>
         </div>
 
         <div class="trees_output">
@@ -63,6 +63,17 @@
                 <label for="nameParent">Enter index of parent:</label>
                 <input type="text" id="nameParent" name="nameParent">
             <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="popup-form-delete-child">
+            <button id="close-popup-btn" onclick="closeFormDeleteChild()">x</button>
+            <form onsubmit="return submitFormDeleteChild();">
+                <label for="indexParent_DeleteChild">Enter index of parent:</label>
+                <input type="text" id="indexParent_DeleteChild" name="indexParent_DeleteChild">
+ 			<label for="indexChild_DeleteChild">Enter index of child:</label>
+                <input type="text" id="indexChild_DeleteChild" name="indexChild_DeleteChild">
+                <button type="submit">Submit</button>
             </form>
         </div>
 </body>
