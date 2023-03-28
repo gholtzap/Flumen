@@ -2,6 +2,7 @@
 
 function showPopup() {
     $("#popup-form").show();
+    $("#textfield").focus();
 }
 
 function closeForm(){
@@ -16,12 +17,15 @@ function submitForm() {
         $("#popup-form").hide();
     });
 
+    $("#textfield").val('');
+
     return false;
 }
 
 // add_child popup
 function showPopupAddChild() {
     $("#popup-form-add-child").show();
+    $("#nameChild").focus();
 }
 
 function closeFormAddChild() {
@@ -37,6 +41,9 @@ function submitFormChild() {
         location.reload();
     });
 
+    $("#nameChild").val('');
+    $('#indexParent').val('');
+
     return false;
 }
 
@@ -44,6 +51,7 @@ function submitFormChild() {
 
 function showPopupDeleteParent() {
     $("#popup-form-delete-parent").show();  
+    $("#nameParent").focus();
 }
 
 function closeFormDeleteParent() {
@@ -57,6 +65,8 @@ function submitFormDeleteParent() {
         $("#popup-form-delete-parent").hide();  
         location.reload();
     });
+    
+    $("#nameParent").val('');
 
     return false;
 }
@@ -65,6 +75,7 @@ function submitFormDeleteParent() {
 
 function showPopupDeleteChild() {
     $("#popup-form-delete-child").show();
+    $("#indexParent_DeleteChild").focus();
 }
 
 function closeFormDeleteChild() {
@@ -80,5 +91,31 @@ function submitFormDeleteChild() {
         location.reload();
     });
 
+    $("#indexParent_DeleteChild").val('');
+    $("#indexChild_DeleteChild").val('');
+
     return false;
 }
+
+
+// key commands
+
+document.addEventListener('keydown', function(event) {
+
+    if(event.key==='a'){
+        showPopup();
+        event.preventDefault();
+    }
+    else if(event.key==='c'){
+        showPopupAddChild();
+        event.preventDefault();
+    }
+    else if (event.key === 'A' && event.shiftKey) {
+        showPopupDeleteParent();
+        event.preventDefault();
+    }
+    else if(event.key === 'C' && event.shiftKey){
+        showPopupDeleteChild();
+        event.preventDefault();
+    }
+});
