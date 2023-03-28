@@ -34,6 +34,7 @@ function submitFormChild() {
     $.post("/submit_child", { nameChild: nameChild, indexParent: indexParent }, function (data) {
         alert(data);
         $("#popup-form-add-child").hide();
+        location.reload();
     });
 
     return false;
@@ -42,18 +43,19 @@ function submitFormChild() {
 // delete_parent popup
 
 function showPopupDeleteParent() {
-    $("#popup-form-delete-parent").show();  // Update the ID
+    $("#popup-form-delete-parent").show();  
 }
 
 function closeFormDeleteParent() {
-    $('#popup-form-delete-parent').hide();  // Update the ID
+    $('#popup-form-delete-parent').hide();  
 }
 
 function submitFormDeleteParent() {
     let indexParent = $("#nameParent").val();
     $.post("/delete_parent", { nameParent: indexParent }, function (data) {
         alert(data);
-        $("#popup-form-delete-parent").hide();  // Update the ID
+        $("#popup-form-delete-parent").hide();  
+        location.reload();
     });
 
     return false;
