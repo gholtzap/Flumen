@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request
 from tree_mod import trees, add_child, create_event_app, delete_parent, delete_child
 
 app = Flask(__name__)

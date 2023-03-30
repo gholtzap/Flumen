@@ -1,4 +1,4 @@
-from treelib import Node, Tree
+from treelib import Tree
 
 # https://treelib.readthedocs.io/en/latest/
 
