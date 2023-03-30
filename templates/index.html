@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <title class="flumen_title">Flumen</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</head>
+
+<body>
+    <h1 class = 'title', style="color:#5da6de;", style="font-family:gill sans, sans-serif;">Flumen.</h1>
+    
+        <div class = "buttons">
+            <button id="addEventBtn" class="modern-button" onclick="showPopup()"> Add Event </button>
+            <button id="addChildBtn" class="modern-button" onclick ="showPopupAddChild()"> Add Child </button>
+            <button id = "deleteParentBtn" class="modern-button" onclick = "showPopupDeleteParent()"> Delete Event </button>
+            <button id= "deleteChildBtn" class="modern-button" onclick="showPopupDeleteChild()"> Delete Child </button>
+        </div>
+        
+        
+        <div class="shortcuts">
+            <h3>Keyboard Shortcuts</h3>
+            <ul>
+                <li>Add Event: "a"</li>
+                <li>Add Child: "c"</li>
+                <li>Delete Event: "shift + a"</li>
+                <li>Delete Child: "shift + c"</li>
+            </ul>
+            <button id="theme-switch" onclick="themeSwap()">Theme Switch</button>
+        </div>
+
+        <div class="trees_output">
+            <br></br>
+            <h2 class = 'full-tree-output-title'>Full Tree<h2>
+            
+            <h2><br></br><pre class = "full_tree">{{ full_tree }}</pre><br></br></h2>
+            
+            <h2 class = 'parents-output-title'>Parents<h2>
+            
+            <h3><br></br><pre class = "parents">{{ parents }}</pre><br></br></h2>
+            
+            <h2 class = 'children-output-title'>Children<h2>
+            
+            <h2><br></br><pre class = "children">{{ children }}</pre><br></br></h2>
+
+        </div>
+
+        <div id="popup-form">
+            <button id="close-popup-btn" onclick="closeForm()">x</button>
+            <form onsubmit="return submitForm();">
+                <label for="textfield">Enter name of event:</label>
+                <input type="text" id="textfield" name="textfield">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="popup-form-add-child">
+            <button id="close-popup-btn" onclick="closeFormAddChild()">x</button>
+            <form onsubmit="return submitFormChild();">
+                <label for="nameChild">Enter name of event:</label>
+                <input type="text" id="nameChild" name="nameChild">
+ 			<label for="indexParent">Enter index of parent:</label>
+                <input type="text" id="indexParent" name="indexParent">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="popup-form-delete-parent">
+            <button id="close-popup-btn" onclick="closeFormDeleteParent()">x</button>
+            <form onsubmit="return submitFormDeleteParent();">
+                <label for="nameParent">Enter index of parent:</label>
+                <input type="text" id="nameParent" name="nameParent">
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="popup-form-delete-child">
+            <button id="close-popup-btn" onclick="closeFormDeleteChild()">x</button>
+            <form onsubmit="return submitFormDeleteChild();">
+                <label for="indexParent_DeleteChild">Enter index of parent:</label>
+                <input type="text" id="indexParent_DeleteChild" name="indexParent_DeleteChild">
+ 			<label for="indexChild_DeleteChild">Enter index of child:</label>
+                <input type="text" id="indexChild_DeleteChild" name="indexChild_DeleteChild">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+</body>
+</html>
