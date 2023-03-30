@@ -119,3 +119,11 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
     }
 });
+
+// dark light mode switch
+
+var themeChange = document.getElementById('theme-switch');
+
+function themeSwap() {
+    document.body.classList.toggle('light-theme');
+}
