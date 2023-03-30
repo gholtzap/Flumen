@@ -102,19 +102,41 @@ function submitFormDeleteChild() {
 
 document.addEventListener('keydown', function(event) {
 
-    if(event.key==='a'){
+    if(
+        event.key==='a' &&
+        $("#popup-form-add-child").is(":hidden") && 
+        $("#popup-form-delete-child").is(":hidden") && 
+        $("#popup-form-delete-parent").is(":hidden")
+        ) {
         showPopup();
         event.preventDefault();
     }
-    else if(event.key==='c'){
+    else if(
+        event.key==='c' && 
+        $("#popup-form").is(":hidden") && 
+        $("#popup-form-delete-child").is(":hidden") && 
+        $("#popup-form-delete-parent").is(":hidden")
+        ) {
         showPopupAddChild();
         event.preventDefault();
     }
-    else if (event.key === 'A' && event.shiftKey) {
+    else if (
+        event.key === 'A' && 
+        event.shiftKey && 
+        $("#popup-form").is(":hidden") && 
+        $("#popup-form-add-child").is(":hidden") && 
+        $("#popup-form-delete-child").is(":hidden")
+        ) {
         showPopupDeleteParent();
         event.preventDefault();
     }
-    else if(event.key === 'C' && event.shiftKey){
+    else if(
+        event.key === 'C' && 
+        event.shiftKey && 
+        $("#popup-form").is(":hidden") && 
+        $("#popup-form-add-child").is(":hidden") && 
+        $("#popup-form-delete-parent").is(":hidden")
+        ) {
         showPopupDeleteChild();
         event.preventDefault();
     }
