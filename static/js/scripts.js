@@ -15,6 +15,7 @@ function submitForm() {
     $.post("/submit_text", { textfield: text }, function (data) {
         alert(data);
         $("#popup-form").hide();
+        location.reload();
     });
 
     $("#textfield").val('');
@@ -110,14 +111,12 @@ document.addEventListener('keydown', function(event) {
 
         ) {
         showPopup();
-        event.preventDefault();
     }
     else if(
         event.key==='c' && 
         $("#popup-form").is(":hidden") && $("#popup-form-delete-child").is(":hidden") && $("#popup-form-delete-parent").is(":hidden")
         ) {
         showPopupAddChild();
-        event.preventDefault();
     }
     else if (
         event.key === 'A' && 
@@ -125,7 +124,6 @@ document.addEventListener('keydown', function(event) {
         $("#popup-form").is(":hidden") && $("#popup-form-add-child").is(":hidden") && $("#popup-form-delete-child").is(":hidden")
         ) {
         showPopupDeleteParent();
-        event.preventDefault();
     }
     else if(
         event.key === 'C' && 
@@ -133,7 +131,6 @@ document.addEventListener('keydown', function(event) {
         $("#popup-form").is(":hidden") && $("#popup-form-add-child").is(":hidden") && $("#popup-form-delete-parent").is(":hidden")
         ) {
         showPopupDeleteChild();
-        event.preventDefault();
     }
 });
 
