@@ -68,7 +68,7 @@ def submit_child():
 @app.route('/delete_parent', methods=['POST'])
 def delete_event_route():
     
-    if request.form['nameParent'] == '' or type(request.form['nameParent']) != int:
+    if request.form['nameParent'] == '' or not request.form['nameParent'].isnumeric():
         return "Please provide valid input: (int)"
     
     index = int(request.form['nameParent'])
@@ -77,9 +77,15 @@ def delete_event_route():
 
 @app.route('/delete_child', methods=['POST'])
 def delete_child_route():
+    print("################################")
+    print(request.form['indexParent'])
+    print(request.form['indexParent'].isnumeric())
     
-    if request.form['indexParent'] == '' or type(request.form['indexParent']) != int or request.form['indexChild'] == '' or type(request.form['indexChild']) != int:
-        return "Please provide valid input: (int)"
+    print(request.form['indexChild'])
+    print(request.form['indexChild'].isnumeric())
+    
+    if request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric() or request.form['indexChild'] == '' or not request.form['indexChild'].isnumeric():
+        return "Please provide valid input: (int) (int)"
     
     index_parent = int(request.form['indexParent'])
     index_child = int(request.form['indexChild'])
