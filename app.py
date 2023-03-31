@@ -21,8 +21,15 @@ def vis_trees(json_object, return_type):
     print("json_object:", json_object) 
     
     for item in json_object:
-        parent = list(item.keys())[0]
-        child_data = item[parent]
+        
+        if isinstance(item, dict):
+            parent = list(item.keys())[0]
+            child_data = item[parent]
+        elif isinstance(item, str):
+            parent = item
+            child_data = {}
+        else:
+            continue
 
         full += f"\n{parent}"
         parents += f"\n{parent}"
