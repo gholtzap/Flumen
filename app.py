@@ -21,8 +21,15 @@ def vis_trees(json_object, return_type):
     print("json_object:", json_object) 
     
     for item in json_object:
-        parent = list(item.keys())[0]
-        child_data = item[parent]
+        
+        if isinstance(item, dict):
+            parent = list(item.keys())[0]
+            child_data = item[parent]
+        elif isinstance(item, str):
+            parent = item
+            child_data = {}
+        else:
+            continue
 
         full += f"\n{parent}"
         parents += f"\n{parent}"
@@ -49,6 +56,10 @@ def submit_text():
 
 @app.route('/submit_child', methods=['POST'])
 def submit_child():
+    
+    if request.form['nameChild'] == '' or request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric():
+        return "Please provide valid input for both fields: (str) , (int)"
+    
     nameChild = request.form['nameChild']
     indexParent = int(request.form['indexParent'])
     add_child(nameChild, indexParent)
@@ -56,12 +67,26 @@ def submit_child():
 
 @app.route('/delete_parent', methods=['POST'])
 def delete_event_route():
+    
+    if request.form['nameParent'] == '' or not request.form['nameParent'].isnumeric():
+        return "Please provide valid input: (int)"
+    
     index = int(request.form['nameParent'])
     delete_parent(index)
     return "Event successfully deleted!"
 
 @app.route('/delete_child', methods=['POST'])
 def delete_child_route():
+    print("################################")
+    print(request.form['indexParent'])
+    print(request.form['indexParent'].isnumeric())
+    
+    print(request.form['indexChild'])
+    print(request.form['indexChild'].isnumeric())
+    
+    if request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric() or request.form['indexChild'] == '' or not request.form['indexChild'].isnumeric():
+        return "Please provide valid input: (int) (int)"
+    
     index_parent = int(request.form['indexParent'])
     index_child = int(request.form['indexChild'])
     delete_child(index_parent, index_child)

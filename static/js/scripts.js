@@ -83,6 +83,7 @@ function closeFormDeleteChild() {
 }
 
 function submitFormDeleteChild() {
+
     let indexParent = $("#indexParent_DeleteChild").val();
     let indexChild = $("#indexChild_DeleteChild").val();
     $.post("/delete_child", { indexParent: indexParent, indexChild: indexChild }, function (data) {
@@ -104,18 +105,16 @@ document.addEventListener('keydown', function(event) {
 
     if(
         event.key==='a' &&
-        $("#popup-form-add-child").is(":hidden") && 
-        $("#popup-form-delete-child").is(":hidden") && 
-        $("#popup-form-delete-parent").is(":hidden")
+
+        $("#popup-form-add-child").is(":hidden") && $("#popup-form-delete-child").is(":hidden") && $("#popup-form-delete-parent").is(":hidden")
+
         ) {
         showPopup();
         event.preventDefault();
     }
     else if(
         event.key==='c' && 
-        $("#popup-form").is(":hidden") && 
-        $("#popup-form-delete-child").is(":hidden") && 
-        $("#popup-form-delete-parent").is(":hidden")
+        $("#popup-form").is(":hidden") && $("#popup-form-delete-child").is(":hidden") && $("#popup-form-delete-parent").is(":hidden")
         ) {
         showPopupAddChild();
         event.preventDefault();
@@ -123,9 +122,7 @@ document.addEventListener('keydown', function(event) {
     else if (
         event.key === 'A' && 
         event.shiftKey && 
-        $("#popup-form").is(":hidden") && 
-        $("#popup-form-add-child").is(":hidden") && 
-        $("#popup-form-delete-child").is(":hidden")
+        $("#popup-form").is(":hidden") && $("#popup-form-add-child").is(":hidden") && $("#popup-form-delete-child").is(":hidden")
         ) {
         showPopupDeleteParent();
         event.preventDefault();
@@ -133,9 +130,7 @@ document.addEventListener('keydown', function(event) {
     else if(
         event.key === 'C' && 
         event.shiftKey && 
-        $("#popup-form").is(":hidden") && 
-        $("#popup-form-add-child").is(":hidden") && 
-        $("#popup-form-delete-parent").is(":hidden")
+        $("#popup-form").is(":hidden") && $("#popup-form-add-child").is(":hidden") && $("#popup-form-delete-parent").is(":hidden")
         ) {
         showPopupDeleteChild();
         event.preventDefault();
