@@ -83,6 +83,23 @@ function closeFormDeleteChild() {
 }
 
 function submitFormDeleteChild() {
+    print("########################################################################")
+    print($("#indexChild_DeleteChild").val())
+    print($("#indexParent_DeleteChild").val())
+
+    if ($("#indexParent_DeleteChild").val() == "" || $("#indexChild_DeleteChild").val() == "") {
+        // Show an error message if either of the fields is empty
+        $("#error-message").text("Please fill in both fields.");
+        $("#error-message").show();
+        alert("test")
+        return false;
+    } else {
+        // Clear the error message if it was shown previously
+        $("#error-message").text("");
+        $("#error-message").hide();
+    }
+
+
     let indexParent = $("#indexParent_DeleteChild").val();
     let indexChild = $("#indexChild_DeleteChild").val();
     $.post("/delete_child", { indexParent: indexParent, indexChild: indexChild }, function (data) {
