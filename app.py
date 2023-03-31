@@ -56,14 +56,6 @@ def submit_text():
 
 @app.route('/submit_child', methods=['POST'])
 def submit_child():
-    print("################################################")
-    print(request.form['nameChild'])
-    print(request.form['indexParent'])
-    print(type(request.form['indexParent']))
-    print("################################################")
-    print(request.form['nameChild'] == '')
-    print(request.form['indexParent'] == '')
-    print(request.form['indexParent'].isnumeric())
     
     if request.form['nameChild'] == '' or request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric():
         return "Please provide valid input for both fields: (str) , (int)"
