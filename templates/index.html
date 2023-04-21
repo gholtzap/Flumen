@@ -1,19 +1,24 @@
 <!DOCTYPE html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}" />
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     
-    <title class="flumen_title">Flumen</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </head>
 
-<body>
-    <h1 class = 'title', style="color:#5da6de;", style="font-family:gill sans, sans-serif;">Flumen.</h1>
-    
+<body class="bg-[var(--bg-color)] text-[var(--font-color)] font-sans m-0 p-0 flex items-center justify-center min-h-screen">
+    <div class="container flex justify-center">
+        <h1 class="flumen_title",>Flumen</h1>
+    </div>
+
         <div class = "buttons">
             <button id="addEventBtn" class="modern-button" onclick="showPopup()"> Add Event </button>
             <button id="addChildBtn" class="modern-button" onclick ="showPopupAddChild()"> Add Child </button>
@@ -29,7 +34,8 @@
                 <li>Delete Event: "shift + a"</li>
                 <li>Delete Child: "shift + c"</li>
             </ul>
-            <button id="theme-switch" onclick="themeSwap()">Theme Switch</button>
+            <input id="theme-switch" class="absolute top-4 right-4 max-w-xs" type="checkbox" onchange="themeSwap()" />
+
         </div>
 
         <div class="trees_output">
@@ -48,7 +54,7 @@
 
         </div>
 
-        <div id="popup-form">
+        <div id="popup-form" class="hidden">
             <button id="close-popup-btn" onclick="closeForm()">x</button>
             <form onsubmit="return submitForm();">
                 <label for="textfield">Enter name of event:</label>
@@ -89,3 +95,4 @@
         </div>
 </body>
 </html>
+

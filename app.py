@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request
-from tree_mod import trees, add_child, create_event_app, delete_parent, delete_child
+from tree_mod import trees, add_child, create_event_app, delete_parent, delete_child, count_child_nodes
 
 app = Flask(__name__)
 
@@ -59,6 +59,8 @@ def submit_child():
     
     if request.form['nameChild'] == '' or request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric():
         return "Please provide valid input for both fields: (str) , (int)"
+    elif (count_child_nodes()<=0):
+        return "C"
     
     nameChild = request.form['nameChild']
     indexParent = int(request.form['indexParent'])

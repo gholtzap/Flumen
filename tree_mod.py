@@ -15,6 +15,14 @@ def count_child_nodes(tree, parent_id):
             child_count += 1
     return child_count
 
+def count_parent_nodes(tree, parent_id):
+    child_count = 0
+    for node_id in tree.nodes:
+        node = tree.get_node(node_id)
+        if node.predecessor(tree.identifier) == parent_id:
+            child_count += 1
+    return child_count
+
 def create_event(value):
     tree = Tree()
     tree.create_node(value,len(trees))
