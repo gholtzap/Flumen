@@ -1,11 +1,12 @@
 from flask import Flask, jsonify, render_template, request
-from tree_mod import trees, add_child, create_event_app, delete_parent, delete_child, count_child_nodes
+from tree_mod import trees, add_child, create_event_app, delete_parent, delete_child, count_child_nodes, count_parent_nodes
 
 app = Flask(__name__)
 
 with open('text_data.txt', 'w') as f:
     f.write('')
-    
+
+
 # visualizes trees in a way that the flask app can print
 def to_dict(self):
     return {"name": self.name, "age": self.age}
@@ -57,10 +58,13 @@ def submit_text():
 @app.route('/submit_child', methods=['POST'])
 def submit_child():
     
-    if request.form['nameChild'] == '' or request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric():
+    childName = request.form['nameChild']
+    parentIndex = request.form['indexParent']
+    
+    if childName == '' or parentIndex == '' or not parentIndex.isnumeric():
         return "Please provide valid input for both fields: (str) , (int)"
-    elif (count_child_nodes()<=0):
-        return "C"
+    elif (int(parentIndex) > count_parent_nodes()):
+        return "Parent index does not exist"
     
     nameChild = request.form['nameChild']
     indexParent = int(request.form['indexParent'])

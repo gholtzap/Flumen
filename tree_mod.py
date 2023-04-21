@@ -15,13 +15,8 @@ def count_child_nodes(tree, parent_id):
             child_count += 1
     return child_count
 
-def count_parent_nodes(tree, parent_id):
-    child_count = 0
-    for node_id in tree.nodes:
-        node = tree.get_node(node_id)
-        if node.predecessor(tree.identifier) == parent_id:
-            child_count += 1
-    return child_count
+def count_parent_nodes():
+    return len(trees)
 
 def create_event(value):
     tree = Tree()
@@ -29,9 +24,13 @@ def create_event(value):
     trees.append(tree)
     return tree
 
-def add_child(value, p):
-    x = count_child_nodes(trees[p], p)
-    trees[p].create_node(value, 100+x, parent=p)
+def add_child(nameChild, indexParent):
+    
+    if(indexParent > count_parent_nodes):
+        return "Parent Index does not exist"
+        
+    x = count_child_nodes(trees[indexParent], indexParent)
+    trees[indexParent].create_node(nameChild, 100+x, parent=indexParent)
     
 def create_event_app(value):
     create_event(value)
