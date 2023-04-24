@@ -58,12 +58,12 @@ def submit_text():
 @app.route('/submit_child', methods=['POST'])
 def submit_child():
     
-    childName = request.form['nameChild']
-    parentIndex = request.form['indexParent']
+    childName,parentIndex = request.form['nameChild'], request.form['indexParent']
     
     if childName == '' or parentIndex == '' or not parentIndex.isnumeric():
         return "Please provide valid input for both fields: (str) , (int)"
-    elif (int(parentIndex) > count_parent_nodes()):
+    elif (int(parentIndex) >= count_parent_nodes()):
+        print("hello test!!!")
         return "Parent index does not exist"
     
     nameChild = request.form['nameChild']

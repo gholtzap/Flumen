@@ -25,10 +25,7 @@ def create_event(value):
     return tree
 
 def add_child(nameChild, indexParent):
-    
-    if(indexParent > count_parent_nodes):
-        return "Parent Index does not exist"
-        
+   
     x = count_child_nodes(trees[indexParent], indexParent)
     trees[indexParent].create_node(nameChild, 100+x, parent=indexParent)
     
