@@ -85,19 +85,26 @@ def delete_event_route():
 
 @app.route('/delete_child', methods=['POST'])
 def delete_child_route():
-    print("################################")
-    print(request.form['indexParent'])
-    print(request.form['indexParent'].isnumeric())
     
-    print(request.form['indexChild'])
-    print(request.form['indexChild'].isnumeric())
     
-    if request.form['indexParent'] == '' or not request.form['indexParent'].isnumeric() or request.form['indexChild'] == '' or not request.form['indexChild'].isnumeric():
+    
+    #print(request.form['indexParent'])
+    #print(request.form['indexParent'].isnumeric())
+    
+    #print(request.form['indexChild'])
+    #print(request.form['indexChild'].isnumeric())
+    
+    indexChild,indexParent = request.form['indexChild'],request.form['indexParent']
+    
+    if indexParent == '' or not indexParent.isnumeric() or indexChild == '' or not indexChild.isnumeric():
         return "Please provide valid input: (int) (int)"
     
-    index_parent = int(request.form['indexParent'])
-    index_child = int(request.form['indexChild'])
-    delete_child(index_parent, index_child)
+    elif int(indexParent) >= count_parent_nodes():
+        return "Parent index out of range"
+    elif int(indexChild) >= count_child_nodes(trees[int(indexParent)],indexParent):
+        return "Child index out of range"
+   
+    delete_child(int(indexParent), int(indexChild))
     return "Event successfully deleted!"
 
 @app.route('/')

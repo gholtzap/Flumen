@@ -246,6 +246,10 @@ body {
     background-color: var(--bg-color)
 }
 
+.hidden {
+    display: none;
+}
+  
 .buttons {
     display: flex;
     justify-content: center;

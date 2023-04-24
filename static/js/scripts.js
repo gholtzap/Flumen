@@ -1,9 +1,14 @@
 // add_parent popup
-
-function showPopup() {
+function hideAllPopups() {
+    $('.popup').hide();
+  }
+  
+  
+  function showPopup() {
+    hideAllPopups();
     $("#popup-form").show();
     $("#textfield").focus();
-}
+  }
 
 function closeForm(){
     $('#popup-form').hide();
@@ -25,9 +30,10 @@ function submitForm() {
 
 // add_child popup
 function showPopupAddChild() {
+    hideAllPopups();
     $("#popup-form-add-child").show();
     $("#nameChild").focus();
-}
+  }
 
 function closeFormAddChild() {
     $('#popup-form-add-child').hide();
@@ -51,9 +57,10 @@ function submitFormChild() {
 // delete_parent popup
 
 function showPopupDeleteParent() {
-    $("#popup-form-delete-parent").show();  
+    hideAllPopups();
+    $("#popup-form-delete-parent").show();
     $("#nameParent").focus();
-}
+  }
 
 function closeFormDeleteParent() {
     $('#popup-form-delete-parent').hide();  
@@ -75,9 +82,10 @@ function submitFormDeleteParent() {
 // delete_child popup
 
 function showPopupDeleteChild() {
+    hideAllPopups();
     $("#popup-form-delete-child").show();
     $("#indexParent_DeleteChild").focus();
-}
+  }
 
 function closeFormDeleteChild() {
     $('#popup-form-delete-child').hide();

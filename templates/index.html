@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </head>
@@ -54,7 +54,7 @@
 
         </div>
 
-        <div id="popup-form" class="hidden">
+        <div id="popup-form" class="hidden popup">
             <button id="close-popup-btn" onclick="closeForm()">x</button>
             <form onsubmit="return submitForm();">
                 <label for="textfield">Enter name of event:</label>
@@ -63,7 +63,7 @@
             </form>
         </div>
 
-        <div id="popup-form-add-child">
+        <div id="popup-form-add-child" class="hidden popup">
             <button id="close-popup-btn" onclick="closeFormAddChild()">x</button>
             <form onsubmit="return submitFormChild();">
                 <label for="nameChild">Enter name of event:</label>
@@ -74,7 +74,7 @@
             </form>
         </div>
 
-        <div id="popup-form-delete-parent">
+        <div id="popup-form-delete-parent" class="hidden popup">
             <button id="close-popup-btn" onclick="closeFormDeleteParent()">x</button>
             <form onsubmit="return submitFormDeleteParent();">
                 <label for="nameParent">Enter index of parent:</label>
@@ -83,7 +83,7 @@
             </form>
         </div>
 
-        <div id="popup-form-delete-child">
+        <div id="popup-form-delete-child"  class="hidden popup">
             <button id="close-popup-btn" onclick="closeFormDeleteChild()">x</button>
             <form onsubmit="return submitFormDeleteChild();">
                 <label for="indexParent_DeleteChild">Enter index of parent:</label>
