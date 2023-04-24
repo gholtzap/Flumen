@@ -64,7 +64,7 @@ def submit_child():
         return "Please provide valid input for both fields: (str) , (int)"
     elif (int(parentIndex) >= count_parent_nodes()):
         print("hello test!!!")
-        return "Parent index does not exist"
+        return "Parent index out of range"
     
     nameChild = request.form['nameChild']
     indexParent = int(request.form['indexParent'])
@@ -76,6 +76,8 @@ def delete_event_route():
     
     if request.form['nameParent'] == '' or not request.form['nameParent'].isnumeric():
         return "Please provide valid input: (int)"
+    elif int(request.form['nameParent']) >= count_parent_nodes():
+        return "Parent index out of range"
     
     index = int(request.form['nameParent'])
     delete_parent(index)
